@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Julia",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon"
+  },
   "dependencies": {
     "nodemon": "^1.18.3",
     "ts-node": "^7.0.0",
