@@ -5,7 +5,8 @@
   "author": "Julia",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "compile": "tsc"
   },
   "dependencies": {
     "nodemon": "^1.18.3",
