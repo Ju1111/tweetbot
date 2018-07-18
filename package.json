@@ -9,8 +9,10 @@
     "compile": "tsc"
   },
   "dependencies": {
+    "@types/twit": "^2.2.15",
     "nodemon": "^1.18.3",
     "ts-node": "^7.0.0",
+    "twit": "^2.2.11",
     "typescript": "^2.9.2"
   }
 }
