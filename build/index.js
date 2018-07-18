@@ -13,7 +13,15 @@ const sleep = () => new Promise(async (resolve) => {
     while (true) {
         const tweets = await twit.get('search/tweets', { q: '@tailor_ju', since_id });
         const tweetData = tweets.data;
-        console.log(tweetData.statuses[0].text);
+        const text = tweetData.statuses[0].text;
+        const tweetId = tweetData.statuses[0].id;
+        const user = tweetData.statuses[0].user.screen_name;
+        console.log(text);
+        if (text.indexOf('bugs') >= 0) {
+            twit.post('statuses/update', {
+                status: `@${user} There are ${Math.floor(Math.random() * 201)} bugs in the code`
+            });
+        }
     }
 });
 sleep();
