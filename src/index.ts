@@ -1,13 +1,19 @@
 import * as Twit from 'twit'
+import { resolve } from 'url';
 
 const twit = new Twit({
-    consumer_key: '	mWpZUIBfTbQw9woUb0NBFiOC1',
-    consumer_secret: 'FuG0rhBtNhpcO3MKhWljzVp0sbaXSScsFqN6pNAu9rtjDnANXv',
-    access_token: '1019499453932285952-KrKT8EkTQDvqlW4oqX9Mr6yURgfo7r',
-    access_token_secret: '1VY0Hj5qklO0KZEKOJHlrlklawVCrsRaqplUp1yHghwh8'
+  consumer_key:         'ysWEFpFmPhYVd68uYRRokazrf',
+  consumer_secret:      '6gETBEsL3DP5Nr0SmR8oKNxSx4rvjz9UpNaUOggQ8wKxq74BjZ',
+  access_token:         '1019499453932285952-favUGdPb6qdfphFv0canM6KkHRRw3n',
+  access_token_secret:  'Klox3DFEs6skw4PqOJ1uoRGSz7hDz6kQuSAAc2wp7b0cN'
 })
 
-const fn = async () => {
-    // await something
-  }
-  fn()
+const sleep = () => new Promise( async (resolve) => {
+    setTimeout(resolve, 5000)
+    while (true) {
+        const tweets = await twit.get('search/tweets', {q:'@tailor_ju'})
+        console.log(tweets.data)
+    }
+})
+
+sleep()
