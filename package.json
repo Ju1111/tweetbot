@@ -1,0 +1,12 @@
+{
+  "name": "tweetbot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Julia",
+  "license": "MIT",
+  "dependencies": {
+    "nodemon": "^1.18.3",
+    "ts-node": "^7.0.0",
+    "typescript": "^2.9.2"
+  }
+}
