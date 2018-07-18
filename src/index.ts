@@ -13,7 +13,9 @@ const sleep = () => new Promise( async (resolve) => {
     let since_id: string | undefined = undefined
     while (true) {
         const tweets = await twit.get('search/tweets', { q:'@tailor_ju', since_id })
-        console.log(tweets.data.statuses[0].text)
+        const tweetData: any = tweets.data
+        console.log(tweetData.statuses[0].text)
+        
     }
 })
 
