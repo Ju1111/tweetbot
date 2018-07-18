@@ -9,10 +9,11 @@ const twit = new Twit({
 })
 
 const sleep = () => new Promise( async (resolve) => {
-    setTimeout(resolve, 5000)
+    setTimeout(resolve, 20000)
+    let since_id: string | undefined = undefined
     while (true) {
-        const tweets = await twit.get('search/tweets', {q:'@tailor_ju'})
-        console.log(tweets.data)
+        const tweets = await twit.get('search/tweets', { q:'@tailor_ju', since_id })
+        console.log(tweets.data.statuses[0].text)
     }
 })
 
