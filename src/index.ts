@@ -1,5 +1,5 @@
 import * as Twit from 'twit'
-import { resolve } from 'url';
+import { resolve } from 'url'
 
 const twit = new Twit({
   consumer_key:         'ysWEFpFmPhYVd68uYRRokazrf',
@@ -8,22 +8,20 @@ const twit = new Twit({
   access_token_secret:  'Klox3DFEs6skw4PqOJ1uoRGSz7hDz6kQuSAAc2wp7b0cN'
 })
 
-const sleep = () => new Promise( async (resolve) => {
-    setTimeout(resolve, 20000)
-    let since_id: string | undefined = undefined
-    while (true) {
-        const tweets = await twit.get('search/tweets', { q:'@tailor_ju', since_id })
-        const tweetData: any = tweets.data
-        const text = tweetData.statuses[0].text
-        const tweetId = tweetData.statuses[0].id
-        const user = tweetData.statuses[0].user.screen_name
-        console.log(text)
-        if (text.indexOf('bugs') >= 0) {
+const getTweet = () => new Promise( async (resolve) => {
+    const stream = twit.stream('statuses/filter', { track: '@tailor_ju' })
+
+    stream.on('tweet', (tweet: Twit.Twitter.Status) => reactToTweet(tweet))
+})
+
+const reactToTweet = (tweet) => new Promise( async (resolve) => {
+    const text = tweet.text
+    const userScreenName = tweet.user.screen_name
+    if (text.indexOf('bugs') >= 0) {
             twit.post('statuses/update', {
-                status: `@${user} There are ${Math.floor(Math.random() * 201)} bugs in the code`
-            })
-        }
+                status: `@${userScreenName} ${Math.floor(Math.random() * 201)} bugs in the code`
+        })
     }
 })
 
-sleep()
+getTweet()
